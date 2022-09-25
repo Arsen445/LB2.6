@@ -6,13 +6,10 @@ from datetime import date
 if __name__ == '__main__':
     trains = []
     while True:
-        
         print("Напишите Help для справк по программе")
         print("введите комаду")
         command = input()
-        
-        
-#-------------------------------------------------------------------------------
+
         if command == "Help" or command == "help" or command == "HELP":
             print("Список команд:\n")
             print("[add - добавить рейс]")
@@ -20,19 +17,16 @@ if __name__ == '__main__':
             print("[select <номер> - запросить рейсы с номером]")
             print("[help - отобразить справку]")
             print("[exit - завершить работу с программой]")
-            
-#-------------------------------------------------------------------------------
-            
+
         elif command == ("add"):
             print("сколько поездов в расписании?")
             kol = int(input())
-            k=0
+            k = 0
             for m in range(int(kol)):
-                k=k+1
+                k = k + 1
                 d = input("Введите пункт для "+str(k)+" поезда:  ")
                 t = int(input("Введите время поезда:  "))
                 n = int(input("Введите номер поезда:  "))
-
                 train = {
                     'd': d,
                     'n': n,
@@ -41,9 +35,7 @@ if __name__ == '__main__':
                 trains.append(train)
                 if len(trains) > 1:
                     trains.sort(key=lambda item: item.get('n', ''))
-           
 
-#-------------------------------------------------------------------------------
         elif command == 'list':
             # Заголовок таблицы.
             line = '+-{}-+-{}-+-{}-+-{}-+'.format(
@@ -62,7 +54,6 @@ if __name__ == '__main__':
                 )
             )
             print(line)
-
             # Вывести данные о всех поездах.
             for idx, train in enumerate(trains, 1):
                 print(
@@ -74,15 +65,10 @@ if __name__ == '__main__':
                     )
                 )
             print(line)
-            
-#-------------------------------------------------------------------------------
-                
+
         elif command == 'exit':
             break
-        
-#-------------------------------------------------------------------------------
-     
-        
+
         elif command.startswith('select '):
                 # Переменная равная введенному номеру
                 selected_num = command[7:]
@@ -99,7 +85,5 @@ if __name__ == '__main__':
                             )
                         )
 
-#-------------------------------------------------------------------------------
-        
         else:
             print(f"Неизвестная команда {command}", file=sys.stderr)
