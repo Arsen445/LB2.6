@@ -22,19 +22,19 @@ if __name__ == '__main__':
             print("сколько поездов в расписании?")
             kol = int(input())
             k = 0
-            for m in range(int(kol)):
+            for m in range(kol):
                 k = k + 1
-                d = input("Введите пункт для "+str(k)+" поезда:  ")
-                t = int(input("Введите время поезда:  "))
-                n = int(input("Введите номер поезда:  "))
+                dist = input("Введите пункт для "+"{}".format(k)+" поезда:  ")
+                time = int(input("Введите время поезда:  "))
+                number = int(input("Введите номер поезда:  "))
                 train = {
-                    'd': d,
-                    'n': n,
-                    't': t,
+                    'dist': dist,
+                    'number': number,
+                    'time': time,
                 }
                 trains.append(train)
                 if len(trains) > 1:
-                    trains.sort(key=lambda item: item.get('n', ''))
+                    trains.sort(key=lambda item: item.get('number', ''))
 
         elif command == 'list':
             # Заголовок таблицы.
@@ -59,9 +59,9 @@ if __name__ == '__main__':
                 print(
                     '| {:>5} | {:<20} | {:<14} | {:>16} |'.format(
                         idx,
-                        train.get('d', ''),
-                        train.get('n', 0),
-                        train.get('t', '')
+                        train.get('dist', ''),
+                        train.get('number', 0),
+                        train.get('time', '')
                     )
                 )
             print(line)
